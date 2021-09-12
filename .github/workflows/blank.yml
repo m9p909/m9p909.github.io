@@ -24,14 +24,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - name: install
-        run: npm install
+        run: yarn install
       # Runs a single command using the runners shell
       - name: GH Pages deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run deploy
+          yarn deploy:ci
               
         
         
