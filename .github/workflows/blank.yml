@@ -26,5 +26,11 @@ jobs:
       - name: install
         run: npm install
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: npm run deploy
+      - name: GH Pages deploy
+        uses: Cecilapp/GitHub-Pages-deploy@3.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          branch: main
+          email: jackfulcher09@gmail.com
+
