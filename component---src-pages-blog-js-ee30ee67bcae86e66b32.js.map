@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-blog-js-ee30ee67bcae86e66b32.js","mappings":"2IAOA,UAHa,WACV,OAAQ,gBAAC,IAAD","sources":["webpack://jack-clarke/./src/pages/blog.js"],"sourcesContent":["import Layout from \"../components/layout\";\nimport React from 'react'\n\n\nconst Blog = () => {\n   return (<Layout></Layout>)\n}\nexport default Blog;"],"names":[],"sourceRoot":""}
