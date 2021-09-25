@@ -9,7 +9,7 @@ const Layout = (props) => {
     assert(links, "Links does not exist");
 
     const createLink = (page, name) => {
-        return <Nav.Link as={Link} to={page}>{name}</Nav.Link>
+        return <Nav.Link as={Link} to={page} key={page}>{name}</Nav.Link>
     }
     const linkDisplay = Object.values(links).map(link => {
         return createLink(link.page, link.name)
