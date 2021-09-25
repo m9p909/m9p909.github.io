@@ -1,7 +1,6 @@
 import Layout from "../components/layout";
 import React from 'react'
 import {useStaticQuery, graphql } from "gatsby";
-import getAllBlogPosts from "../scripts/functions/getAllBlogPosts";
 
 
 const Blog = () => {

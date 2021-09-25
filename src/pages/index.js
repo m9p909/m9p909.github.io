@@ -1,7 +1,6 @@
 import * as React from "react"
-import {Button} from "react-bootstrap";
 import Layout from "../components/layout"
-import Link from "gatsby-link";
+
 
 const IndexPage = () => {
     return (
