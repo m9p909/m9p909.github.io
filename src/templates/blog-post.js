@@ -1,7 +1,8 @@
+import React from 'react'
 const BlogPost = (something) => {
     return <div>
         Cool Blog Post
-        {something}
+        {JSON.stringify(something)}
     </div>
 }
 
