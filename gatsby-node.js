@@ -1,4 +1,5 @@
 const path = require("path");
+const {snake_case_string} = require("./src/scripts/functions/snakeCase")
 // Implement the Gatsby API “createPages”. This is called once the
 // data layer is bootstrapped to let plugins create pages from data.
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -27,7 +28,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Create pages for each markdown file.
   const blogPostTemplate =require.resolve(`./src/templates/blog-post.js`);
   result.data.allContentfulBlogPost.nodes.forEach(( node , index) => {
-    const path = node.id
+    const path = `blog/${snake_case_string(node.title)}`
     createPage({
       path,
       component: blogPostTemplate,
@@ -35,8 +36,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // as a GraphQL variable to query for data from the markdown file.
       context: {
         pagePath: path,
+        node
       },
-      data: node,
     })
   })
 }

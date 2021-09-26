@@ -8,7 +8,7 @@ const IndexPage = () => {
             <main>
                 <div className={"text-center"}>
                     <h1>Welcome to my website!</h1>
-                    <h2></h2>
+                    <h2> This website is a WIP, but feel free to check it out</h2>
                 </div>
             </main>
         </Layout>

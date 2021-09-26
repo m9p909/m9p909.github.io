@@ -1,7 +1,7 @@
 import '../styles/layout.scss'
-import {Nav, Navbar} from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
 import React from 'react'
-import {Link} from "gatsby";
+import { Link } from "gatsby";
 import assert from "../utils/assert";
 import links from "./links";
 
@@ -16,18 +16,21 @@ const Layout = (props) => {
     });
 
     return (
-        <div>
+        <>
             <Navbar bg={"light"} expand={"lg"}>
-                <Navbar.Brand>Jack Clarke</Navbar.Brand>
-                <Navbar.Toggle></Navbar.Toggle>
-                <Navbar.Collapse>
-                    <Nav>
-                        {linkDisplay}
-                    </Nav>
-                </Navbar.Collapse>
+                <Container>
+                    <Navbar.Brand>Jack Clarke</Navbar.Brand>
+                    <Navbar.Toggle></Navbar.Toggle>
+                    <Navbar.Collapse>
+                        <Nav>
+                            {linkDisplay}
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
             </Navbar>
-            <div>{props.children}</div>
-        </div>
+
+            <Container>{props.children}</Container>
+        </>
     )
 }
 
