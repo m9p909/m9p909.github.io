@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjack_clarke=self.webpackChunkjack_clarke||[]).push([[678],{7704:function(e,t,l){l.r(t);var c=l(7294),n=l(9728);t.default=function(){return c.createElement(n.Z,null,c.createElement("main",null,c.createElement("div",{className:"text-center"},c.createElement("h1",null,"Welcome to my website!"),c.createElement("h2",null," This website is a WIP, but feel free to check it out"))))}}}]);
+//# sourceMappingURL=component---src-pages-index-js-70cb4daeaf1cb8b99db7.js.map
