@@ -11,6 +11,7 @@ on:
     branches: [ master ]
 
   
+
     
 
   # Allows you to run this workflow manually from the Actions tab
@@ -30,6 +31,8 @@ jobs:
       - name: install
         run: yarn install
       # Runs a single command using the runners shell
+      - name: test
+        run: yarn test
       - name: GH Pages deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

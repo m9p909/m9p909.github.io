@@ -14,18 +14,28 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gatsby build && gh-pages -d public -b main",
-    "deploy:ci": "gatsby build && gh-pages -d public -b main -u \"github-actions-bot <support+actions@github.com>\""
+    "deploy:ci": "gatsby build && gh-pages -d public -b main -u \"github-actions-bot <support+actions@github.com>\"",
+    "test": "jest"
   },
   "dependencies": {
+    "babel-jest": "^27.2.2",
+    "babel-preset-gatsby": "^1.14.0",
     "bootstrap": "^5.1.0",
+    "dotenv": "^10.0.0",
     "gatsby": "^3.13.0",
+    "gatsby-plugin-image": "^1.14.0",
     "gatsby-plugin-sass": "^4.13.0",
+    "gatsby-plugin-sharp": "^3.14.0",
+    "gatsby-source-contentful": "^5.14.0",
+    "gatsby-transformer-sharp": "^3.14.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^27.2.2",
     "gatsby-source-filesystem": "^3.13.0",
-    "jest": "^27.1.1",
     "prettier": "^2.4.0",
     "react": "^17.0.1",
     "react-bootstrap": "^2.0.0-beta.6",
     "react-dom": "^17.0.1",
+    "react-test-renderer": "^17.0.2",
     "sass": "^1.39.2"
   },
   "devDependencies": {
