@@ -4,10 +4,21 @@ import { Image, Container, Row, Col } from 'react-bootstrap'
 import { useStaticQuery, graphql } from "gatsby"
 import SkillPill from "../components/SkillPill"
 import assert from "../utils/assert"
+import ExperienceDisplay from "../components/ExperienceDisplay"
 
 const debug = false;
 
-function skillsReducer(state, action) {
+export const setAllActive = (state) => {
+  let newState = new Map(state);
+  Array.from(newState.keys()).forEach((key) => {
+    const value = newState.get(key);
+    value.active = true;
+    newState.set(key, value);
+  });
+  return newState;
+}
+
+export function skillsReducer(state, action) {
   if (debug) {
     console.log("state: ");
     console.log(state);
@@ -16,57 +27,67 @@ function skillsReducer(state, action) {
   }
   switch (action.type) {
     case 'setActiveSkill':
-      assert(action.key, 'this action needs a key')
-      let newState = new Map(state);
-      const skill = newState.get(action.key);
-      skill.active = !skill.active;
-      newState.set(action.key, skill);
-      return newState;
+      const setActiveSkill = (state, action) => {
+        assert(action.key, 'this action needs a key')
+        let newState = new Map(state);
+        const skill = newState.get(action.key);
+        skill.active = !skill.active;
+        newState.set(action.key, skill);
+        return newState;
+      }
+      return setActiveSkill(state, action);
+      
+    case 'setAllActive':
+      // currently has no use but will when I have the set all active button
+      return setAllActive(state);
+
     default:
       throw new Error();
   }
 }
 
+export const sortSkills = (skills) => Array.from(skills.values()).sort((a, b) => b.proficiency - a.proficiency);
+
 
 const IndexPage = () => {
   const data = useStaticQuery(graphql`query GetOwner {
-      contentfulOwner {
-        lastName
-        firstName
-        profilePicture {
-          fixed(height: 400, width: 400) {
-            srcWebp
-            base64
-          }
+    contentfulOwner {
+      lastName
+      firstName
+      profilePicture {
+        fixed(height: 400, width: 400) {
+          srcWebp
+          base64
         }
-        experience {
-          name
-          points {
-            childrenContentfulPointDescriptionTextNode {
-              description
-            }
-            skills {
-              id
-              skill
-              proficiency
-            }
+      }
+      experience {
+        name
+        points {
+          skills {
+            id
+            skill
+            proficiency
           }
-        }
-        projects {
-          name
-          points {
-            childrenContentfulPointDescriptionTextNode {
-              description
-            }
-            skills {
-              id
-              skill
-              proficiency
-            }
+          description {
+            description
           }
         }
       }
-    }`);
+      projects {
+        name
+        points {
+          skills {
+            id
+            skill
+            proficiency
+          }
+          description {
+            description
+          }
+        }
+      }
+    }
+  }`);
 
   const owner = data.contentfulOwner;
   const profilePicture = owner.profilePicture.fixed.srcWebp;
@@ -84,14 +105,16 @@ const IndexPage = () => {
     () => {
       const map = new Map();
       getSkills(owner.experience, map);
-      getSkills(owner.projects, map)
-      return map;
+      getSkills(owner.projects, map);
+      return setAllActive(map);
     },
     [owner]);
 
 
   const [skills, dispatch] = React.useReducer(skillsReducer, skillsFromContentful)
-  const skillsAsArray = React.useMemo(() => Array.from(skills.values()).sort((a, b) => b - a) , [skills])
+
+
+  const skillsAsArray = React.useMemo(() => sortSkills(skills), [skills])
 
   return (
     <Layout>
@@ -127,8 +150,18 @@ const IndexPage = () => {
           </Row>
           <hr></hr>
           <Row>
-            
+            <Container>
+              <h2>Experience</h2>
+            </Container>
           </Row>
+          {owner.experience.map((experience, index) => <Row><ExperienceDisplay experience={experience} key={index}></ExperienceDisplay></Row>)}
+          <hr></hr>
+          <Row>
+            <Container>
+              <h2>Projects</h2>
+            </Container>
+          </Row>
+          {owner.projects.map((experience, index) => <Row><ExperienceDisplay experience={experience} key={index}></ExperienceDisplay></Row>)}
         </Container>
       </main>
     </Layout>
