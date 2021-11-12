@@ -1,18 +1,10 @@
 import React from 'react';
 import Layout from "../components/layout";
+import Resume from "../components/Resume"
 
-const Header = (props) => {
-}
-
-
-const Resume = (props) => {
+const ResumePage = (props) => {
     return(<Layout>
-        <div id='printable'
-             style={{width: '8.5in', height: '11in', background: 'white', margin: '50px'}}>
-                 <div id='printable'
-             style={{width: '8.5in', height: '11in', background: 'white', margin: '50px'}}>
-        </div>
-        </div>
+        <Resume></Resume>
     </Layout>)
 }
-export default Resume;
+export default ResumePage;
