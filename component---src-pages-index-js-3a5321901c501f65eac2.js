@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkjack_clarke=self.webpackChunkjack_clarke||[]).push([[678],{7704:function(e,c,l){l.r(c);var n=l(7294),a=l(7504),t=(l(5444),l(2396));c.default=function(){return n.createElement(a.Z,null,n.createElement(t.Z,null))}}}]);
+//# sourceMappingURL=component---src-pages-index-js-3a5321901c501f65eac2.js.map
