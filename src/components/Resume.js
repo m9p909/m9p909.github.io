@@ -100,7 +100,7 @@ const Resume = () => {
     getSkills(owner.experience, map);
     getSkills(owner.projects, map);
     return setAllActive(map);
-  }, [owner]);
+  }, [owner.experience, owner.projects]);
 
   const [skills, dispatch] = React.useReducer(
     skillsReducer,
@@ -110,7 +110,7 @@ const Resume = () => {
   const skillsAsArray = React.useMemo(() => sortSkills(skills), [skills]);
 
   return (
-    <Container>
+    <>
   
         <NameAndPicture></NameAndPicture>
     
@@ -160,7 +160,7 @@ const Resume = () => {
           ></ExperienceDisplay>
         </Row>
       ))}
-    </Container>
+    </>
   );
 };
 
