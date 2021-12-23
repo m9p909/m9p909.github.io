@@ -13,7 +13,6 @@ import MusicDisplay from "../components/MusicDisplay"
 const IndexPage = () => {
 
  return (<Layout><NameAndPicture></NameAndPicture>
- <MusicDisplay></MusicDisplay>
  </Layout>)
 }
 

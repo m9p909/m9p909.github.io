@@ -8,12 +8,21 @@ const LinkColumn = (props) => {
     assert(props.image, "no image in link col")
     assert(props.link, "no link in LinkColumn")
 
+    const LinkButton = () => {
+      if(props.link.startsWith("mailto")){
+        return <Button variant="link" href={props.link}>{props.link.substring(7,props.link.length)}</Button>
+      } else {
+        return <Button variant="link" href={props.link} target="_blank" rel="noreferrer">{props.link}</Button>
+      }
+
+    }
+
   return (
     <Col className="text-center">
       <h1>
         {props.image}
       </h1>
-      <Button variant="link" href={props.link} target="_blank" rel="noreferrer">{props.link}</Button>
+      <LinkButton></LinkButton>
     </Col>
   );
 };
@@ -67,16 +76,14 @@ export default function NameAndPicture(props) {
         </Col>
       </Row>
       <Row style={{ paddingTop: "10px" }}>
-        <Card>
-          <Row style={{ padding: "10px" }}>
-              <LinkColumn link={owner.linkedIn} image={<Linkedin></Linkedin>}></LinkColumn>
+        <Card> <Row style={{ padding: "10px" }}> <LinkColumn link={owner.linkedIn} image={<Linkedin></Linkedin>}></LinkColumn>
               <LinkColumn link={owner.github} image={<Github></Github>}></LinkColumn>
               <LinkColumn link={owner.codewarsLink} image={<img
                   class="img-fluid"
                   style={{ minWidth: "300px" }}
                   src={owner.codewarsLink + "/badges/large"}
                 ></img>}></LinkColumn>
-              <LinkColumn link={"mailto: jackfulcher09@gmail.com"} image={<EnvelopeFill></EnvelopeFill>}></LinkColumn>
+              <LinkColumn link={"mailto:jackfulcher09@gmail.com"} image={<EnvelopeFill></EnvelopeFill>}></LinkColumn>
           </Row>
         </Card>
       </Row>
