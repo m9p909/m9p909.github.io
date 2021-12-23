@@ -7,13 +7,13 @@ import { Card, Col, Row } from "react-bootstrap"
 import { Linkedin } from "react-bootstrap-icons"
 import GoodreadsReadDisplay from "../components/GoodreadsReadDisplay"
 import '../components/goodreads.css'
+import MusicDisplay from "../components/MusicDisplay"
 
 
 const IndexPage = () => {
 
  return (<Layout><NameAndPicture></NameAndPicture>
- <GoodreadsReadDisplay></GoodreadsReadDisplay>
-  
+ <MusicDisplay></MusicDisplay>
  </Layout>)
 }
 

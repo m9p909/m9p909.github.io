@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row, Image, Card, Button } from "react-bootstrap";
 import { useStaticQuery, graphql } from "gatsby";
-import { Github, Linkedin } from "react-bootstrap-icons";
+import { Github, Linkedin, EnvelopeFill } from "react-bootstrap-icons";
 import assert from "../utils/assert";
 
 const LinkColumn = (props) => {
@@ -13,7 +13,7 @@ const LinkColumn = (props) => {
       <h1>
         {props.image}
       </h1>
-      <Button variant="link" href={props.link} target="_blank">{props.link}</Button>
+      <Button variant="link" href={props.link} target="_blank" rel="noreferrer">{props.link}</Button>
     </Col>
   );
 };
@@ -76,6 +76,7 @@ export default function NameAndPicture(props) {
                   style={{ minWidth: "300px" }}
                   src={owner.codewarsLink + "/badges/large"}
                 ></img>}></LinkColumn>
+              <LinkColumn link={"mailto: jackfulcher09@gmail.com"} image={<EnvelopeFill></EnvelopeFill>}></LinkColumn>
           </Row>
         </Card>
       </Row>
