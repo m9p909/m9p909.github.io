@@ -58,6 +58,24 @@ Array [
           >
             Resume
           </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key={null}
+            disabled={false}
+            href="/books/"
+            onClick={[Function]}
+          >
+            Books I've Read
+          </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key={null}
+            disabled={false}
+            href="/music/"
+            onClick={[Function]}
+          >
+            My Music
+          </a>
         </div>
       </div>
     </div>

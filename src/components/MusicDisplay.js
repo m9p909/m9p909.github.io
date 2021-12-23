@@ -25,6 +25,11 @@ const SpotifyLikedSongs = () => (
 const MusicDisplay = () => {
   return (
     <>
+      <h1>About My Favorite Music</h1>
+      <p>
+        {" "}
+        My favorite genre is Prog Rock, but my top 100 songs for 2021 are much more varied. 
+      </p>
       <h1> My 2021 Top Songs</h1>
       <SpotifyTop2021></SpotifyTop2021>
       <h1> List of liked songs</h1>
