@@ -1,10 +1,7 @@
 import * as React from "react"
 import Layout from "../components/layout"
-
 import NameAndPicture from "../components/NameAndPicture"
-
 import '../components/goodreads.css'
-import { Graphics, Stage } from "react-pixi-fiber"
 import CoolAnimation from "../components/CoolAnimation"
 
 
