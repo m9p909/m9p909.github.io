@@ -1,6 +1,6 @@
 import assert from "../utils/assert";
-import { ButtonGroup, Container, ToggleButton } from "react-bootstrap";
-import React, { useState } from "react";
+import { ButtonGroup, ToggleButton } from "react-bootstrap";
+import React from "react";
 
 
 export default function SkillPill(props) {
@@ -14,7 +14,7 @@ export default function SkillPill(props) {
     const getVariant = () => {
         return variants[index % 4];
     }
-    return (<span style={{ padding: '2px' }}>
+    return (<div style={{ width: "fit-content", margin: "10px"}}>
         <ButtonGroup>
             <ToggleButton
                 checked={skill.active}
@@ -24,6 +24,6 @@ export default function SkillPill(props) {
                 {skill.skill} {skill.proficiency}/5
             </ToggleButton>
         </ButtonGroup>
-    </span>)
+    </div>)
 
 }

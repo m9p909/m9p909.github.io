@@ -1,23 +1,32 @@
 import * as React from "react";
 import Layout from "./layout";
-import { Image, Container, Row, Col } from "react-bootstrap";
+import { Image, Container, Row, Col, Button } from "react-bootstrap";
 import { useStaticQuery, graphql } from "gatsby";
 import SkillPill from "./SkillPill";
 import assert from "../utils/assert";
 import ExperienceDisplay from "./ExperienceDisplay";
 import NameAndPicture from "./NameAndPicture";
 
+
 const debug = false;
 
-export const setAllActive = (state) => {
+const setAll = (state, input) => {
   let newState = new Map(state);
   Array.from(newState.keys()).forEach((key) => {
     const value = newState.get(key);
-    value.active = true;
-    newState.set(key, value);
+    value.active = input;
+    newState.set(key, input);
   });
   return newState;
+}
+
+export const setAllActive = (state) => {
+  return setAll(state, true)
 };
+
+export const setAllInactive = (state) => {
+  return setAll(state, false)  
+}
 
 export function skillsReducer(state, action) {
   if (debug) {
@@ -41,6 +50,9 @@ export function skillsReducer(state, action) {
     case "setAllActive":
       // currently has no use but will when I have the set all active button
       return setAllActive(state);
+    
+    case "setAllInactive":
+      return setAllInactive(state);
 
     default:
       throw new Error();
@@ -121,7 +133,16 @@ const Resume = () => {
         </Container>
       </Row>
       <Row>
-        <Container>
+        <Container fluid className="flex-wrap">
+          <Row>
+            <Button onClick={() => dispatch("setAllInactive")}>
+              Deselect all
+            </Button>
+            <Button onClick={() => dispatch("setAllActive")}>
+              Select All
+            </Button>
+          </Row>
+          <Row>
           {skillsAsArray.map((skill, index) => (
             <SkillPill
               skill={skill}
@@ -130,6 +151,7 @@ const Resume = () => {
               dispatch={dispatch}
             ></SkillPill>
           ))}
+          </Row>
         </Container>
       </Row>
       <hr></hr>

@@ -1,18 +1,25 @@
 import * as React from "react"
 import Layout from "../components/layout"
-import { useStaticQuery, graphql } from "gatsby"
+
 import NameAndPicture from "../components/NameAndPicture"
-import CardHeader from "react-bootstrap/esm/CardHeader"
-import { Card, Col, Row } from "react-bootstrap"
-import { Linkedin } from "react-bootstrap-icons"
-import GoodreadsReadDisplay from "../components/GoodreadsReadDisplay"
+
 import '../components/goodreads.css'
-import MusicDisplay from "../components/MusicDisplay"
+import { Graphics, Stage } from "react-pixi-fiber"
+import CoolAnimation from "../components/CoolAnimation"
+
 
 
 const IndexPage = () => {
 
- return (<Layout><NameAndPicture></NameAndPicture>
+ return (<Layout>
+     <NameAndPicture></NameAndPicture>
+     <h1>About Me</h1>
+     <p>
+         I'm a 4th year software engineering student at uOttawa. I can do frontend and backend dev with JS, Java, Python or Clojure. 
+         I've recently been working with kubernetes and terraform as a systems engineer. 
+         I also like jazz, hip-hop, league of legends,  and anything sci-fi or fantasy. I've also been learning to skateboard!
+     </p>
+     <CoolAnimation />
  </Layout>)
 }
 
