@@ -44,6 +44,15 @@ Array [
             className="nav-link"
             data-rr-ui-event-key={null}
             disabled={false}
+            href="/resume/"
+            onClick={[Function]}
+          >
+            Resume
+          </a>
+          <a
+            className="nav-link"
+            data-rr-ui-event-key={null}
+            disabled={false}
             href="/books/"
             onClick={[Function]}
           >
