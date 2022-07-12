@@ -8,15 +8,16 @@ import ExperienceDisplay from "./ExperienceDisplay";
 import NameAndPicture from "./NameAndPicture";
 
 
-const debug = false;
+const debug = true;
 
 const setAll = (state, input) => {
   let newState = new Map(state);
   Array.from(newState.keys()).forEach((key) => {
     const value = newState.get(key);
     value.active = input;
-    newState.set(key, input);
+    newState = newState.set(key, value);
   });
+  console.log(newState)
   return newState;
 }
 
@@ -35,28 +36,27 @@ export function skillsReducer(state, action) {
     console.log("action");
     console.log(action);
   }
-  switch (action.type) {
-    case "setActiveSkill":
-      const setActiveSkill = (state, action) => {
-        assert(action.key, "this action needs a key");
-        let newState = new Map(state);
-        const skill = newState.get(action.key);
-        skill.active = !skill.active;
-        newState.set(action.key, skill);
-        return newState;
-      };
-      return setActiveSkill(state, action);
+  const setActiveSkill = (state, action) => {
+    assert(action.key, "this action needs a key");
+    let newState = new Map(state);
+    const skill = newState.get(action.key);
+    skill.active = !skill.active;
+    newState.set(action.key, skill);
+    return newState;
+  };
 
-    case "setAllActive":
-      // currently has no use but will when I have the set all active button
-      return setAllActive(state);
-    
-    case "setAllInactive":
-      return setAllInactive(state);
 
-    default:
-      throw new Error();
+  const cases = {
+    setActiveSkill: () => setActiveSkill(state, action),
+    setAllInactive: () => setAllInactive(state),
+    setAllActive: () => setAllActive(state)
   }
+  if(cases[action.type]){
+    return cases[action.type]()
+  } else {
+    throw new Error("No function found")
+  }
+  
 }
 
 export const sortSkills = (skills) =>
@@ -135,10 +135,10 @@ const Resume = () => {
       <Row>
         <Container fluid className="flex-wrap">
           <Row>
-            <Button onClick={() => dispatch("setAllInactive")}>
+            <Button onClick={() => dispatch({type: "setAllInactive"})}>
               Deselect all
             </Button>
-            <Button onClick={() => dispatch("setAllActive")}>
+            <Button onClick={() => dispatch({type: "setAllActive"})}>
               Select All
             </Button>
           </Row>

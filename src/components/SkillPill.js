@@ -14,7 +14,7 @@ export default function SkillPill(props) {
     const getVariant = () => {
         return variants[index % 4];
     }
-    return (<div style={{ width: "fit-content", margin: "10px"}}>
+    return (<div style={{ width: "fit-content", margin: "10px"}} key={props.skill.id}>
         <ButtonGroup>
             <ToggleButton
                 checked={skill.active}

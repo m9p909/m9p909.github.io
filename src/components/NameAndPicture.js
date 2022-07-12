@@ -79,7 +79,7 @@ export default function NameAndPicture(props) {
         <Card> <Row style={{ padding: "10px" }}> <LinkColumn link={owner.linkedIn} image={<Linkedin></Linkedin>}></LinkColumn>
               <LinkColumn link={owner.github} image={<Github></Github>}></LinkColumn>
               <LinkColumn link={owner.codewarsLink} image={<img
-                  class="img-fluid"
+                  className="img-fluid"
                   style={{ minWidth: "300px" }}
                   src={owner.codewarsLink + "/badges/large"}
                 ></img>}></LinkColumn>
