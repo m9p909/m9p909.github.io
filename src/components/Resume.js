@@ -8,7 +8,7 @@ import ExperienceDisplay from "./ExperienceDisplay";
 import NameAndPicture from "./NameAndPicture";
 
 
-const debug = true;
+const debug = false;
 
 const setAll = (state, input) => {
   let newState = new Map(state);
